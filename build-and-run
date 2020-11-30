@@ -1,0 +1,5 @@
+#!/bin/sh
+node rom-maker
+ca65 --cpu 65816 -s -o build/program.o src/program.s
+ld65 -C src/memmap.cfg -o build/program.sfc build/program.o
+$BSNES build/program.sfc
